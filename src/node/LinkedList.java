@@ -1,6 +1,7 @@
 package node;
 
 import adt.ADT;
+import contact.Person;
 
 public class LinkedList<E> implements ADT<E> {
     private Node<E> head = null;
@@ -33,6 +34,7 @@ public class LinkedList<E> implements ADT<E> {
         }
         size++;
     }
+
     @Override
     public void insert(E data) {
         if (head == null) {
@@ -73,7 +75,36 @@ public class LinkedList<E> implements ADT<E> {
 
     @Override
     public LinkedList<E> sort(LinkedList<E> person) {
-        return null;
+        for (int i = 0; i < person.getSize(); i++) {
+            for (int j = 1; j < person.getSize(); j++) {
+                Node person1 = person.getNode(j - 1);
+                Node person2 = person.getNode(j);
+                Person first = (Person) person1.getData();
+                Person second = (Person) person2.getData();
+                if (first.getFirstName().compareTo(second.getFirstName()) >= 1) {
+                    person.swap(person1, person2, j - 2);
+
+                }
+            }
+        }
+        return person;
+
+
+    }
+
+    private void swap(Node<E> first, Node<E> second, int previous) {
+        if (first == head) {
+            Node temp = second.getNext();
+            head = second;
+            second.setNext(first);
+            first.setNext(temp);
+        } else {
+            Node temp = second.getNext();
+            Node pre = getNode(previous);
+            pre.setNext(second);
+            second.setNext(first);
+            first.setNext(temp);
+        }
     }
 }
 
