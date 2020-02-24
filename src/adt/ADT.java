@@ -5,5 +5,7 @@ public interface ADT<E> {
 
     void delete();
 
+    void traverse();
+
 
 }
