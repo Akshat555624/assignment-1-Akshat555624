@@ -42,9 +42,21 @@ public class LinkedList<E> implements ADT<E> {
         }
     }
 
+    public void delete(int index) {
+        if (index == 0) {
+            head = head.getNext();
+        } else {
+            Node temp = getNode(index - 1);
+            Node nextNode = getNode(index);
+            temp.setNext(nextNode.getNext());
+        }
+        size--;
+    }
+
 
     @Override
     public void delete() {
+        delete(size - 1);
 
     }
 
