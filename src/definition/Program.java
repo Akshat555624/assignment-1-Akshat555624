@@ -7,8 +7,8 @@ import java.util.Scanner;
 
 
 public class Program {
-    Scanner scanner = new Scanner(System.in);
-    Person personLinked = null;
+    private Scanner scanner = new Scanner(System.in);
+    private Person personLinked = null;
     Regex check = new Regex();
 
     public Person addDetails() {
